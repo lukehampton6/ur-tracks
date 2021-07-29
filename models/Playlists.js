@@ -11,7 +11,24 @@ Playlist.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        playlist_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+          songs: {
+              type: DataTypes.STRING,
+              allowNull: false,
+              autoIncrement:true
+          }, 
+          
+            sequelize,
+            timestamps: false,
+            freezeTableName: true,
+            underscored: true,
+            modelName: 'Playlist',
+          
+
     }
-)
+);
 
 module.exports = Playlist;

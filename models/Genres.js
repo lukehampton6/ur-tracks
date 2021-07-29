@@ -11,7 +11,18 @@ Genre.init (
             primaryKey: true,
             autoIncrement: true,
         },
+        genre_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+
+        },
+
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "Genre",
     }
-)
+);
 
 module.exports = Genre;
