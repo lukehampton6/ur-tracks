@@ -4,7 +4,9 @@ const Playlist = require("../../models/Playlists");
 // create a new playlist
 router.post('/', (req, res) => {
     Playlist.create({
-        //playlist model structure
+        playlist_name: req.body.playlist_name,
+        songs: req.body.songs,
+        user_id: req.body.user_id
     })
     .then((playlistData) => res.json(playlistData))
     .catch((err) => {
