@@ -23,7 +23,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   User.create({
     user_email: req.body.user_email,
-    password: req.body.password
+    password: req.body.password,
   })
     .then((dbUser) => {
       res.json(dbUser);
