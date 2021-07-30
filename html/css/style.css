@@ -1,0 +1,70 @@
+body{
+    background-color: #871414;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+#login {
+    border:solid 1px black;
+    padding: 20px;
+    border-radius: 40px;
+    width: 500px;
+    background-color: black;
+    
+  }
+
+  #login-button{
+      border-radius: 25px;
+      height: 40px;
+      width: 120px;
+      background-color: white;
+      outline: none;
+      font-size: 20px;
+      font-weight: bolder;
+      border-style: none;
+  }
+
+  #sign-up {
+      color: whitesmoke;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      text-decoration: none;
+      margin: 5px;
+  }
+
+  .head-text {
+      color: whitesmoke;
+      font-size: 50px;
+  }
+
+  .login-text {
+      font-size: 30px;
+      color: whitesmoke;
+  }
+  .user-input {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: 5px;
+      margin: 10px auto;
+      border-radius: 25px;
+      outline: none;
+      padding: 20px;
+      font-size: 20px;
+      text-align: center;
+  }
+
+
+  #email {
+  }
+
+  #password {
+     
+  }
