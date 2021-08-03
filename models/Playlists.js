@@ -27,14 +27,15 @@ Playlist.init(
               key: 'id'
             }
           },
+    },
 
-            sequelize,
-            timestamps: false,
-            freezeTableName: true,
-            underscored: true,
-            modelName: 'Playlist',
-          
-
+    {
+      sequelize,
+      timestamps: false,
+      freezeTableName: true,
+      underscored: true,
+      modelName: 'Playlist',
+    
     }
 );
 
