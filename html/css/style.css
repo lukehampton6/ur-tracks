@@ -107,6 +107,10 @@ title{
     padding: 30px;
     border-radius: 50px;
   }
+  
+  #search-form {
+      text-align: center;
+  }
 
 #search{
     height: 75px;
@@ -117,11 +121,31 @@ title{
     font-size: 50px;
     text-align: center;
     color: whitesmoke;
-    border: none
+    border: none;
+    box-shadow: none;
 }
 
-#search-form {
+#playlist-name {
+    width: 500px;
+    background-color: black;
+    color: whitesmoke;
+    border-radius: 25px;
     text-align: center;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin-left:30px ;
+}
+
+#done-button{
+    height: 30px;
+    width: 80px;
+    border-radius: 25px;
+    background-color: gray;
+      outline: none;
+      font-size: 20px;
+      font-weight: bolder;
+      border: solid 1px rgb(148, 148, 148);
 }
 
 #song-card {
