@@ -2,6 +2,9 @@ body{
     background-color: #871414;
 }
 
+title{
+    color: #871414;
+}
 .center {
     position: absolute;
     top: 50%;
@@ -60,10 +63,47 @@ body{
       text-align: center;
   }
 
+#nav-bar {
+    margin-bottom: 30px;
+}
 
-  #email {
+.nav-wrapper{
+    background-color: #871414;
+}
+
+.brand-logo {
+ margin-left: 30px;
+}
+
+#sign-out{
+    font-size: 20px;
+}
+
+.playlist-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#add-playlist {
+    margin-left: 710px;
+}
+
+  #playlists {
+      height: 800px;
+      width: 600px;
+      background-color: black;
+      color: whitesmoke;
+      padding: 30px;
+      border-radius: 50px;
   }
 
-  #password {
-     
+  #playlist-card{
+    height: 800px;
+    width: 900px;
+    background-color: black;
+    color: whitesmoke;
+    padding: 30px;
+    border-radius: 50px;
   }
+
