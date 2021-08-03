@@ -16,18 +16,17 @@ body{
     border-radius: 40px;
     width: 500px;
     background-color: black;
-    
   }
 
   #login-button{
       border-radius: 25px;
       height: 40px;
       width: 120px;
-      background-color: white;
+      background-color: gray;
       outline: none;
       font-size: 20px;
       font-weight: bolder;
-      border-style: none;
+      border: solid 2px rgb(148, 148, 148);
   }
 
   #sign-up {
