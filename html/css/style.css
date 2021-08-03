@@ -41,6 +41,7 @@ title{
       margin: 5px;
   }
 
+
   .head-text {
       color: whitesmoke;
       font-size: 50px;
@@ -79,7 +80,7 @@ title{
     font-size: 20px;
 }
 
-.playlist-container{
+.playlist-container, .songs-container{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -107,3 +108,27 @@ title{
     border-radius: 50px;
   }
 
+#search{
+    height: 75px;
+    width: 700px;
+    margin: 10px 10px 10px 10px;
+    background-color: black;
+    border-radius: 50px;
+    font-size: 50px;
+    text-align: center;
+    color: whitesmoke;
+    border: none
+}
+
+#search-form {
+    text-align: center;
+}
+
+#song-card {
+    height: 750px;
+    width: 1000px;
+    background-color: black;
+    color: whitesmoke;
+    padding: 30px;
+    border-radius: 50px;
+}
