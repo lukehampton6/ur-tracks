@@ -48,8 +48,17 @@ async function done(event) {
   if (playlist_name) {
     if ((songs == "")) {
       alert("Song required");
-    } else {
-      console.log(songs);
+    } else {      
+      var songsArray = songs.split(',')
+      songs = ""
+      for(var i=0; i<songsArray.length - 1; i++) {
+        if (i == songsArray.length - 2) {
+          songs += songsArray[i]
+        } else {
+          songs += songsArray[i] + ','
+        }
+      }    
+
       const response = await fetch("api/playlists/create_playlist", {
         method: "post",
         body: JSON.stringify({
@@ -70,6 +79,23 @@ async function done(event) {
     alert("Playlist name required");
   }
 }
+
+
+var displayPlaylist = function(data) {
+  var id = data.id.split('playlist')[1]
+  const response = fetch(`homepage/${id}`, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    console.log("good");
+  } else {
+    console.log("bad");
+  }
+}
+
 
 document.querySelector("#search-btn").addEventListener("click", search);
 document.querySelector("#done-btn").addEventListener("click", done);

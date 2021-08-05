@@ -2,18 +2,10 @@ const router = require("express").Router();
 const axios = require("axios");
 const Playlist = require("../../models/Playlists");
 
-// create a new playlist
-router.post("/", (req, res) => {
-  Playlist.create({
-    playlist_name: req.body.playlist_name,
-    songs: req.body.songs,
-    user_id: req.session.user_id,
-  })
-    .then((playlistData) => res.json(playlistData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+router.get("/findall", (req, res) => {
+  Playlist.findAll().then((dbData) => {
+    res.json(dbData);
+  });
 });
 
 //delete a playlist
@@ -58,17 +50,28 @@ router.put("/:id", (req, res) => {
 
 // get one playlist
 router.get("/:id", (req, res) => {
-  Playlist.findOne({
-    where: {
-      id: req.params.id,
-    },
-  })
+    var id = req.params.id;
+  Playlist.findAll()
     .then((playlistData) => {
-      if (!playlistData) {
-        res.status(404).json({ message: "No playlist found :(" });
-        return;
-      }
-      res.json(playlistData);
+      var playlist_names = [];
+      var playlist = [];
+      playlistData.forEach(element => {
+        playlist_names.push({
+            id: element.id,
+            names: element.playlist_name,
+          });
+          if(element.id == id) {
+            playlist.push({
+                id: element.id,
+                info: element.songs.split(","),
+              });
+          }
+      })    
+
+      res.render("homepage", {
+        playlist_names: playlist_names,
+        playlist: playlist.info,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -89,15 +92,14 @@ router.post("/search", (req, res) => {
 });
 
 router.post("/create_playlist", (req, res) => {
-    Playlist.create({
-        playlist_name: req.body.playlist_name,
-        songs: req.body.songs,
-        user_id: req.session.user_id
-    })
-    .then((dbUserData) => {
-        console.log(dbUserData);
-        res.json(dbUserData);
-    })
+  Playlist.create({
+    playlist_name: req.body.playlist_name,
+    songs: req.body.songs,
+    user_id: req.session.user_id,
+  }).then((dbUserData) => {
+    console.log(dbUserData);
+    res.json(dbUserData);
+  });
 });
 
 module.exports = router;

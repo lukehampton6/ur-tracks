@@ -7,25 +7,52 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// router.get("/signup", (req, res) => {
-//   res.render("signup");
-// });
+router.get("/homepage/:id", (req, res) => {
+  var id = req.params.id;
+Playlist.findAll()
+  .then((playlistData) => {
+    var playlist_names = [];
+    var playlist = [];
+    playlistData.forEach(element => {
+      playlist_names.push({
+          id: element.id,
+          names: element.playlist_name,
+        });
+        if(element.id == id) {
+          playlist.push({
+              id: element.id,
+              info: element.songs.split(","),
+            });
+        }
+    })    
+    res.render("homepage", {
+      playlist_names: playlist_names,
+      playlist: playlist
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
 
-router.get("/homepage", (req, res) => {
-  console.log(req.session);
-  User.findAll({
+router.get("/homepage", withAuth, (req, res) => {
+  Playlist.findAll({
     where: {
-      id: req.session.user_id,
-    },
-    include: [
-      {
-        model: Playlist,
-      },
-    ],
+      user_id: req.session.user_id,
+    }
   })
     .then((dbUserData) => {
-      res.render("homepage");
-      console.log(dbUserData, req.session);
+      var playlist_names = [];
+      var playlist = [];
+      dbUserData.forEach(element => {
+        playlist_names.push({id: element.id, names: element.playlist_name})
+        playlist.push({id: element.id, info: element.songs.split(',')})
+      })
+      res.render("homepage", {
+        playlist_names: playlist_names
+        // playlist: playlist
+      });
     })
     .catch((err) => {
       console.log(err);
