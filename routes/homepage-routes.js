@@ -4,10 +4,7 @@ const User = require("../models");
 
 router.get("/", (req, res) => {
   console.log(req.session);
-  res.render("main").catch((err) => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+  res.render("homepage");
 });
 
 router.get("/login", (req, res) => {
