@@ -62,6 +62,7 @@ title {
   color: whitesmoke;
 }
 .user-input {
+  color: white;
   display: flex;
   flex-direction: column;
   width: 300px;
