@@ -32,6 +32,17 @@ title {
   border: solid 2px rgb(148, 148, 148);
 }
 
+#signup-button {
+  border-radius: 25px;
+  height: 40px;
+  width: 120px;
+  background-color: gray;
+  outline: none;
+  font-size: 20px;
+  font-weight: bolder;
+  border: solid 2px rgb(148, 148, 148);
+}
+
 #sign-up {
   color: whitesmoke;
   font-size: 20px;
