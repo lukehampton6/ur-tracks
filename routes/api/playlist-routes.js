@@ -90,4 +90,6 @@ router.post("/search", (req, res) => {
   });
 });
 
+router.post("/create_playlist", (req, res) => {});
+
 module.exports = router;
