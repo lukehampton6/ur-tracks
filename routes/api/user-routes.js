@@ -58,10 +58,13 @@ router.post("/login", (req, res) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.user_email = dbUserData.user_email;
-      req.session.loggedIn = true;
-
-      res.json({ user: dbUserData, message: "You are now logged in!" });
+      req.session.loggedIn = true;     
     });
+    res.render('homepage');
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
@@ -93,26 +96,6 @@ router.post("/logout", (req, res) => {
   } else {
     res.status(404).end();
   }
-});
-
-router.put("/:id", (req, res) => {
-  User.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  }).then((dbUpdate) => {
-    res.json(dbUpdate);
-  });
-});
-
-router.delete("/:id", (req, res) => {
-  User.destroy({
-    where: {
-      id: req.params.id,
-    },
-  }).then((dbDelete) => {
-    res.json(dbDelete);
-  });
 });
 
 module.exports = router;
