@@ -1,4 +1,25 @@
   <div class="playlist-container">
-        <div class="" id="playlists"></div>
-        <div class="" id="playlist-card"></div>
+        <div class="" id="playlists">
+          <ol>
+            {{#each playlist_names}}
+            <li id=`playlist{{id}} onclick="displayPlaylist(this)">
+              {{names}}
+            </li>
+            {{/each}}
+          </ol>
+        </div>
+        
+        <div class="" id="playlist-card">
+          {{#if playlist}}
+            
+            <ol id=`playlist-songs{{id}}>
+            <div>
+              {{> songlist}}
+              {{!-- {{this}} --}}
+            </div>
+            </ol>
+            
+          {{/if}}
+        </div>
+        
       </div>

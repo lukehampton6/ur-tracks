@@ -1,5 +1,3 @@
-const { json } = require("sequelize/types");
-
 var userSearch = "";
 var songsObj = [];
 var songs = "";
@@ -41,8 +39,6 @@ function getInfo(data) {
   var id = data.id.split("song")[1] - 1;
   data.setAttribute("hidden", "");
   songs += songsObj[id].name + " " + songsObj[id].song + ", ";
-  console.log(songs);
-  //   songs += element.name + " - " + element.song + ",";
 }
 
 async function done(event) {
@@ -50,9 +46,19 @@ async function done(event) {
   playlist_name = document.getElementById("playlist-name").value;
 
   if (playlist_name) {
-    if ((songs = "")) {
+    if ((songs == "")) {
       alert("Song required");
-    } else {
+    } else {      
+      var songsArray = songs.split(',')
+      songs = ""
+      for(var i=0; i<songsArray.length - 1; i++) {
+        if (i == songsArray.length - 2) {
+          songs += songsArray[i]
+        } else {
+          songs += songsArray[i] + ','
+        }
+      }    
+
       const response = await fetch("api/playlists/create_playlist", {
         method: "post",
         body: JSON.stringify({
@@ -74,7 +80,22 @@ async function done(event) {
   }
 }
 
+
+var displayPlaylist = function(data) {
+  var id = data.id.split('playlist')[1]
+  const response = fetch(`homepage/${id}`, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    console.log("good");
+  } else {
+    console.log("bad");
+  }
+}
+
+
 document.querySelector("#search-btn").addEventListener("click", search);
 document.querySelector("#done-btn").addEventListener("click", done);
-
-// fetch('https://cors-anywhere.herokuapp.com/http://api.deezer.com/search/track/autocomplete?limit=1&q=eminem')
