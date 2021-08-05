@@ -88,6 +88,10 @@ router.post("/search", (req, res) => {
       artistInfo.push({ name: element.artist.name, song: element.title });
     });
     return res.send(artistInfo);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
@@ -99,6 +103,10 @@ router.post("/create_playlist", (req, res) => {
   }).then((dbUserData) => {
     console.log(dbUserData);
     res.json(dbUserData);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
