@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const User = require("../../models/Users");
+const sequelize = require("../config/connection");
+const { User, Playlist, Genre } = require("../models");
 
 router.get("/", (req, res) => {
     res.render('login');
@@ -14,6 +15,11 @@ router.get("/:username", (req, res) => {
     where: {
       username: req.params.user_email,
     },
+    include: [
+      {
+        model: Playlist
+      }
+    ]
   })
     .then((dbUserData) => res.render("homepage", dbUserData))
     .catch((err) => {
