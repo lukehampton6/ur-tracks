@@ -1,13 +1,9 @@
 const router = require("express").Router();
 const User = require("../../models/Users");
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   User.findAll()
-    .then((dbUserData) => res.json(dbUserData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  .then((userData) => res.json(userData));
 });
 
 router.get("/:id", (req, res) => {
@@ -17,7 +13,7 @@ router.get("/:id", (req, res) => {
     },
   }).then((oneUser) => {
     res.json(oneUser);
-  });
+  }); 
 });
 
 router.post("/", (req, res) => {
