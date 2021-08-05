@@ -84,12 +84,20 @@ router.post("/search", (req, res) => {
     data.forEach((element) => {
       artistInfo.push({ name: element.artist.name, song: element.title });
     });
-    console.log(artistInfo);
-    // console.log(data);
     return res.send(artistInfo);
   });
 });
 
-router.post("/create_playlist", (req, res) => {});
+router.post("/create_playlist", (req, res) => {
+    Playlist.create({
+        playlist_name: req.body.playlist_name,
+        songs: req.body.songs,
+        user_id: req.session.user_id
+    })
+    .then((dbUserData) => {
+        console.log(dbUserData);
+        res.json(dbUserData);
+    })
+});
 
 module.exports = router;
